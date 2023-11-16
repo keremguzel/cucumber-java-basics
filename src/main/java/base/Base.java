@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.Driver;
 
-import java.time.Duration;
 
 public abstract class Base extends Driver{
     private WebDriver driver = Driver.setUp();
