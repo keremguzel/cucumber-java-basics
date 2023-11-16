@@ -3,8 +3,11 @@ package base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.Driver;
+
+import java.time.Duration;
 
 public abstract class Base extends Driver{
     private WebDriver driver = Driver.setUp();
@@ -30,5 +33,10 @@ public abstract class Base extends Driver{
 
     public String readElementValue(WebElement locator){
         return locator.getText();
+    }
+
+    public void wait_for_seconds(WebElement locator, long second){
+        Wait<WebDriver> wait = new WebDriverWait(driver, second);
+        wait.until(d -> elementIsVisible(locator));
     }
 }

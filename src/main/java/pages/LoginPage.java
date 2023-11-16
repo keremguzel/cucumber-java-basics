@@ -9,40 +9,42 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends Base {
 
     WebDriver driver;
+
     public LoginPage() {
         this.driver = setUp();
-        PageFactory.initElements(this.driver,this);
+        PageFactory.initElements(this.driver, this);
     }
 
-    @FindBy(id="username")
+    @FindBy(id = "username")
     private WebElement usernameTextBox;
 
-    @FindBy(id="password")
+    @FindBy(id = "password")
     private WebElement passwordTextBox;
 
-    @FindBy(id="submit")
+    @FindBy(id = "submit")
     private WebElement loginButton;
 
-    @FindBy(id="error")
+    @FindBy(id = "error")
     private WebElement errorMessage;
 
-    public void navigateToLoginPage(String url){
+    public void navigateToLoginPage(String url) {
         navigate(url);
     }
 
-    public void clickLoginButton(){
+    public void clickLoginButton() {
         clickElement(loginButton);
     }
 
-    public void typeUsername(String username){
-        sendKey(usernameTextBox,username);
+    public void typeUsername(String username) {
+        sendKey(usernameTextBox, username);
     }
 
-    public void typePassword(String password){
-        sendKey(passwordTextBox,password);
+    public void typePassword(String password) {
+        sendKey(passwordTextBox, password);
     }
 
-    public String readMessage(){
+    public String readMessage() {
+        wait_for_seconds(errorMessage,2);
         return readElementValue(errorMessage);
     }
 }
